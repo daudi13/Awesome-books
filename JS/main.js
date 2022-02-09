@@ -1,10 +1,14 @@
-let books = [];
+const books = [];
 const listSection = document.querySelector('.list-section');
 const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const theForm = document.querySelector('form');
 
 // adding items in the books array
+
+function removeBook(i) {
+  books.splice(i, 1);
+}
 
 function addBookItem(bookItem) {
   const bookBlock = document.createElement('div');
@@ -25,8 +29,8 @@ function addBookItem(bookItem) {
 
   document.querySelectorAll('.remove-btn').forEach((btn, i) => {
     btn.addEventListener('click', () => {
-			x[i].remove();
-			removeBook(i);
+      x[i].remove();
+      removeBook(i);
     });
   });
 }
@@ -40,11 +44,6 @@ function addBooks(item) {
   localStorage.setItem('CollectedBooks', JSON.stringify(books));
   bookTitle.value = '';
   bookAuthor.value = '';
-}
-
-function removeBook(i) {
-	books.splice(i, 1);
-	console.log(books)
 }
 
 theForm.addEventListener('submit', (e) => {
