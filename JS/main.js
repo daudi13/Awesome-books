@@ -14,7 +14,8 @@ function addBookItem(bookItem) {
   removeBtn.classList.add('remove-btn');
   removeBtn.innerText = 'remove';
 
-  const underLine = document.createElement('hr');
+	const underLine = document.createElement('hr');
+	
 
   bookBlock.innerHTML = `<p class="book-title">${bookItem.title}</p>
 <p class="book-Author">${bookItem.author}</p>`;
@@ -49,3 +50,16 @@ theForm.addEventListener('submit', (e) => {
     author: bookAuthor.value,
   });
 });
+
+class AddValues {
+	constructor(title, author) {
+		this.title = title,
+		this.author = author
+	}
+
+	insertData()
+}
+
+const bookValues = new AddValues(bookTitle.value, bookAuthor.value)
+
+console.log(bookValues)
