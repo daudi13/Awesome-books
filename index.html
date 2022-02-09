@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./CSS/style.css">
 	<title>Document</title>
 </head>
 <body>
@@ -12,23 +13,18 @@
 	</header>
 	<main class="main">
 		<section class="list-section">
-			<div class="bookBlock">
-				<p class="book-title">Lorem ipsum</p>
-				<p class="book-Author">John Doe</p>
-				<button>Remove</button>
-				<hr>
-			</div>
 		</section>
 		<form>
 			<label for="title">
-				<input type="text" id="title" placeholder="Title">
+				<input type="text" id="title" placeholder="Title" required>
 			</label>
 			<label for="author">
-				<input type="text" id="author" placeholder="Author">
+				<input type="text" id="author" placeholder="Author" required>
 			</label>
 
-			<button type="submit">Add</button>
+			<button type="submit" class="btn-submit">add</button>
 		</form>
 	</main>
+	<script src="./JS/main.js"></script>
 </body>
 </html>
