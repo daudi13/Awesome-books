@@ -1,4 +1,4 @@
-const books = [];
+let books = [];
 const listSection = document.querySelector('.list-section');
 const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
@@ -25,7 +25,8 @@ function addBookItem(bookItem) {
 
   document.querySelectorAll('.remove-btn').forEach((btn, i) => {
     btn.addEventListener('click', () => {
-      x[i].remove();
+			x[i].remove();
+			removeBook(i);
     });
   });
 }
@@ -39,6 +40,11 @@ function addBooks(item) {
   localStorage.setItem('CollectedBooks', JSON.stringify(books));
   bookTitle.value = '';
   bookAuthor.value = '';
+}
+
+function removeBook(i) {
+	books.splice(i, 1);
+	console.log(books)
 }
 
 theForm.addEventListener('submit', (e) => {
