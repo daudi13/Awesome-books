@@ -21,7 +21,7 @@ class UpdateDisplay {
   static addBooks() {
     const bookItem = new UpdateDisplay(
       UpdateDisplay.bookTitle.value,
-      UpdateDisplay.bookAuthor.value
+      UpdateDisplay.bookAuthor.value,
     );
     books.push(bookItem);
     localStorage.setItem('books', JSON.stringify(books));
