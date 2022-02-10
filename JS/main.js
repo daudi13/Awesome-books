@@ -1,65 +1,33 @@
-const books = [];
-const listSection = document.querySelector('.list-section');
-const bookTitle = document.querySelector('#title');
-const bookAuthor = document.querySelector('#author');
-const theForm = document.querySelector('form');
 
-// adding items in the books array
 
-function addBookItem(bookItem) {
-  const bookBlock = document.createElement('div');
-  bookBlock.classList.add('bookBlock');
 
-  const removeBtn = document.createElement('button');
-  removeBtn.classList.add('remove-btn');
-  removeBtn.innerText = 'remove';
+// Initialize the books
+let books;
 
-	const underLine = document.createElement('hr');
-	
 
-  bookBlock.innerHTML = `<p class="book-title">${bookItem.title}</p>
-<p class="book-Author">${bookItem.author}</p>`;
-  bookBlock.appendChild(removeBtn);
-  bookBlock.appendChild(underLine);
-  listSection.appendChild(bookBlock);
-  const x = Array.from(document.querySelectorAll('.bookBlock'));
+// create the book class
 
-  document.querySelectorAll('.remove-btn').forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-      x[i].remove();
-    });
-  });
-}
-
-function addBooks(item) {
-  addBookItem(item);
-  books.push({
-    title: bookTitle.value,
-    author: bookAuthor.value,
-  });
-
-  localStorage.setItem('CollectedBooks', JSON.stringify(books));
-  bookTitle.value = '';
-  bookAuthor.value = '';
-}
-
-theForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  addBooks({
-    title: bookTitle.value,
-    author: bookAuthor.value,
-  });
-});
-
-class AddValues {
-	constructor(title, author) {
-		this.title = title,
+class Book {
+	constructor(author, title) {
+		this.title = title
 		this.author = author
 	}
-
-	insertData()
 }
 
-const bookValues = new AddValues(bookTitle.value, bookAuthor.value)
+class updateDisplay {
+	static listSection = document.querySelector('container')
+	static bookTitle = document.querySelector('#title');
+	static theForm = document.querySelector('form');
+	static bookAuthor = document.querySelector('#author');
 
-console.log(bookValues)
+	// create new book
+	static addBookItem() {
+		const bookItem = new Book(updateDisplay.bookAuthor.value, updateDisplay.bookTitle.value);
+
+		books.push(bookItem);
+		localStorage.setItem('collection', JSON.stringify(books));
+
+		updateDisplay.bookAuthor.value = '';
+		updateDisplay.bookTitle.value = '';
+	}
+}
