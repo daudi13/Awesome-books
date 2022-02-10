@@ -2,14 +2,13 @@
 let books;
 
 // create the book class
-class Book {
-	constructor(author, title) {
-		this.title = title
-		this.author = author
-	}
-}
 
 class updateDisplay {
+		constructor(author, title) {
+		this.title = title
+		this.author = author
+		}
+	
 	static listSection = document.querySelector('.list-section')
 	static bookTitle = document.querySelector('#title');
 	static formBtn = document.querySelector('.btn-submit');
@@ -17,7 +16,7 @@ class updateDisplay {
 
 	// create new book
   static addBooks() {
-		const bookItem = new Book(updateDisplay.bookTitle.value, updateDisplay.bookAuthor.value);
+		const bookItem = new updateDisplay(updateDisplay.bookTitle.value, updateDisplay.bookAuthor.value);
 		books = [];
 		books.push(bookItem);
 		updateDisplay.bookAuthor.value = '';
@@ -48,9 +47,9 @@ class updateDisplay {
 			bookBlock.appendChild(underLine);
 			updateDisplay.listSection.appendChild(bookBlock);
 
-		removeBtn.addEventListener('click', () => {
+		removeBtn.onClick = () => {
 			updateDisplay.delBook(bookItem, pos)
-		})
+		}
 }
 }
 
