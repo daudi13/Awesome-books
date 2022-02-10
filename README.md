@@ -2,7 +2,7 @@
 
 # Awesome books
 
-![screenshot](./app_screenshot.png)
+![screenshot](./awesomebook.png)
 
 > This is a team project in the Microverse second Module. The proect is a book application that enables a user to add and remove books to a list
 
