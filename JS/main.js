@@ -10,24 +10,31 @@ class Book {
 }
 
 class updateDisplay {
-	static listSection = document.querySelector('.list-section');
+	static listSection = document.querySelector('.list-section')
 	static bookTitle = document.querySelector('#title');
-	static theForm = document.querySelector('form');
+	static formBtn = document.querySelector('.btn-submit');
 	static bookAuthor = document.querySelector('#author');
 
 	// create new book
-	static addBookItem() {
-		const bookItem = new Book(updateDisplay.bookAuthor.value, updateDisplay.bookTitle.value);
-
+  static addBooks() {
+		const bookItem = new Book(updateDisplay.bookTitle.value, updateDisplay.bookAuthor.value);
+		books = [];
 		books.push(bookItem);
-		localStorage.setItem('collection', JSON.stringify(books));
 		updateDisplay.bookAuthor.value = '';
 		updateDisplay.bookTitle.value = '';
+		updateDisplay.addBookItem(bookItem, (books.length -1));
+	}
+	
+	static delBook(bookItem, pos) {
+		const bookBlock = document.getElementById(pos);
+		books = books.filter((item) => item !== bookItem);
+		updateDisplay.listSection.removeChild(bookBlock);
 	}
 
-	static addBookItem(bookItem) {
+	static addBookItem(bookItem, pos) {
 	const bookBlock = document.createElement('div');
-	bookBlock.classList.add('bookBlock');
+		bookBlock.classList.add('bookBlock');
+		bookBlock.id = pos;
 
 	const removeBtn = document.createElement('button');
 	removeBtn.classList.add('remove-btn');
@@ -40,15 +47,11 @@ class updateDisplay {
 			bookBlock.appendChild(removeBtn);
 			bookBlock.appendChild(underLine);
 			updateDisplay.listSection.appendChild(bookBlock);
-	let x = Array.from(document.querySelectorAll('.bookBlock'));
 
-	document.querySelectorAll('.remove-btn').forEach((btn, i) => {
-		btn.addEventListener('click', () => {
-			x[i].remove();
+		removeBtn.addEventListener('click', () => {
+			updateDisplay.delBook(bookItem, pos)
 		})
-	})
 }
 }
 
-
-updateDisplay.theForm.addEventListener('submit', updateDisplay.addBookItem);
+updateDisplay.formBtn.addEventListener('click', updateDisplay.addBooks);
