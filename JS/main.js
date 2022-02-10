@@ -3,7 +3,7 @@ let books;
 
 // create the book class
 
-class updateDisplay {
+class UpdateDisplay {
 		constructor(author, title) {
 		this.title = title
 		this.author = author
@@ -16,18 +16,32 @@ class updateDisplay {
 
 	// create new book
   static addBooks() {
-		const bookItem = new updateDisplay(updateDisplay.bookTitle.value, updateDisplay.bookAuthor.value);
-		books = [];
+		const bookItem = new UpdateDisplay(UpdateDisplay.bookTitle.value, UpdateDisplay.bookAuthor.value);
 		books.push(bookItem);
-		updateDisplay.bookAuthor.value = '';
-		updateDisplay.bookTitle.value = '';
-		updateDisplay.addBookItem(bookItem, (books.length -1));
+		localStorage.setItem('books', JSON.stringify(books));
+		
+		UpdateDisplay.bookAuthor.value = '';
+		UpdateDisplay.bookTitle.value = '';
+		UpdateDisplay.addBookItem(bookItem, (books.length -1));
 	}
 	
 	static delBook(bookItem, pos) {
 		const bookBlock = document.getElementById(pos);
 		books = books.filter((item) => item !== bookItem);
-		updateDisplay.listSection.removeChild(bookBlock);
+		localStorage.setItem('books', JSON.stringify(books));
+		UpdateDisplay.listSection.removeChild(bookBlock);
+	}
+
+	static updateUi() {
+		if (localStorage.getItem('books')) {
+    books = JSON.parse(localStorage.getItem('books'));
+    books.forEach((bookItem, pos) => {
+      UpdateDisplay.addBookItem(bookItem, pos);
+    });
+  } else {
+    localStorage.setItem('books', '');
+    books = [];
+  }
 	}
 
 	static addBookItem(bookItem, pos) {
@@ -37,21 +51,24 @@ class updateDisplay {
 
 	const removeBtn = document.createElement('button');
 	removeBtn.classList.add('remove-btn');
-	removeBtn.innerText = 'remove';
-
 	const underLine = document.createElement('hr');
 
-	bookBlock.innerHTML = `
+		bookBlock.innerHTML = `
 			<p class="book-Author">${bookItem.author}</p>
-			<p class="book-title">${bookItem.title}</p>`
+			<p class="book-title">${bookItem.title}</p>`;
+		
+			removeBtn.innerText = 'remove';
+
+			removeBtn.onclick = () => {
+			UpdateDisplay.delBook(bookItem, pos)
+			}
+		
 			bookBlock.appendChild(removeBtn);
 			bookBlock.appendChild(underLine);
-			updateDisplay.listSection.appendChild(bookBlock);
-
-		removeBtn.onclick = () => {
-			updateDisplay.delBook(bookItem, pos)
-		}
+			UpdateDisplay.listSection.appendChild(bookBlock);
 }
 }
 
-updateDisplay.formBtn.addEventListener('click', updateDisplay.addBooks);
+UpdateDisplay.updateUi();
+
+UpdateDisplay.formBtn.addEventListener('click', UpdateDisplay.addBooks);
