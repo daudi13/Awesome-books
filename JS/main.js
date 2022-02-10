@@ -9,61 +9,61 @@ class UpdateDisplay {
     this.author = author;
   }
 
-  static listSection = document.querySelector(".list-section");
+  static listSection = document.querySelector('.list-section');
 
-  static bookTitle = document.querySelector("#title");
+  static bookTitle = document.querySelector('#title');
 
-  static formBtn = document.querySelector(".btn-submit");
+  static formBtn = document.querySelector('.btn-submit');
 
-  static bookAuthor = document.querySelector("#author");
+  static bookAuthor = document.querySelector('#author');
 
   // create new book
   static addBooks() {
     const bookItem = new UpdateDisplay(
       UpdateDisplay.bookTitle.value,
-      UpdateDisplay.bookAuthor.value
+      UpdateDisplay.bookAuthor.value,
     );
     books.push(bookItem);
-    localStorage.setItem("books", JSON.stringify(books));
+    localStorage.setItem('books', JSON.stringify(books));
 
-    UpdateDisplay.bookAuthor.value = "";
-    UpdateDisplay.bookTitle.value = "";
+    UpdateDisplay.bookAuthor.value = '';
+    UpdateDisplay.bookTitle.value = '';
     UpdateDisplay.addBookItem(bookItem, books.length - 1);
   }
 
   static delBook(bookItem, pos) {
     const bookBlock = document.getElementById(pos);
     books = books.filter((item) => item !== bookItem);
-    localStorage.setItem("books", JSON.stringify(books));
+    localStorage.setItem('books', JSON.stringify(books));
     UpdateDisplay.listSection.removeChild(bookBlock);
   }
 
   static updateUi() {
-    if (localStorage.getItem("books")) {
-      books = JSON.parse(localStorage.getItem("books"));
+    if (localStorage.getItem('books')) {
+      books = JSON.parse(localStorage.getItem('books'));
       books.forEach((bookItem, pos) => {
         UpdateDisplay.addBookItem(bookItem, pos);
       });
     } else {
-      localStorage.setItem("books", "");
+      localStorage.setItem('books', '');
       books = [];
     }
   }
 
   static addBookItem(bookItem, pos) {
-    const bookBlock = document.createElement("div");
-    bookBlock.classList.add("bookBlock");
+    const bookBlock = document.createElement('div');
+    bookBlock.classList.add('bookBlock');
     bookBlock.id = pos;
 
-    const removeBtn = document.createElement("button");
-    removeBtn.classList.add("remove-btn");
-    const underLine = document.createElement("hr");
+    const removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-btn');
+    const underLine = document.createElement('hr');
 
     bookBlock.innerHTML = `
-      <p class="book-Author">${bookItem.author}</p>
-      <p class="book-title">${bookItem.title}</p>`;
+      <p class='book-Author'>${bookItem.author}</p>
+      <p class='book-title'>${bookItem.title}</p>`;
 
-    removeBtn.innerText = "remove";
+    removeBtn.innerText = 'remove';
 
     removeBtn.onclick = () => {
       UpdateDisplay.delBook(bookItem, pos);
@@ -77,4 +77,4 @@ class UpdateDisplay {
 
 UpdateDisplay.updateUi();
 
-UpdateDisplay.formBtn.addEventListener("click", UpdateDisplay.addBooks);
+UpdateDisplay.formBtn.addEventListener('click', UpdateDisplay.addBooks);
