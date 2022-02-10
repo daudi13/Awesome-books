@@ -1,5 +1,33 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-section {
+  border: 2px solid black;
+  width: 100%;
+}
+
+.bookBlock {
+  padding: 1px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bookBlock:nth-child(odd){
+  background-color: rgb(209, 208, 208);
+}
 
 form {
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -7,4 +35,18 @@ form {
 
 form > * + * {
   margin-top: 20px;
+}
+
+.heading {
+  font-weight: 600;
+}
+
+button {
+  align-self: flex-end;
+}
+
+.remove-btn {
+  align-self: auto;
+  height: 20px;
+  align-self: center;
 }

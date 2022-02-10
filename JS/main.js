@@ -14,12 +14,12 @@ function addBookItem(bookItem) {
   removeBtn.classList.add('remove-btn');
   removeBtn.innerText = 'remove';
 
-  const underLine = document.createElement('hr');
+  // const underLine = document.createElement('hr');
 
   bookBlock.innerHTML = `<p class='book-title'>${bookItem.title}</p>
 <p class='book-Author'>${bookItem.author}</p>`;
   bookBlock.appendChild(removeBtn);
-  bookBlock.appendChild(underLine);
+  // bookBlock.appendChild(underLine);
   listSection.appendChild(bookBlock);
   const x = Array.from(document.querySelectorAll('.bookBlock'));
 
