@@ -21,7 +21,7 @@ class UpdateDisplay {
   static addBooks() {
     const bookItem = new UpdateDisplay(
       UpdateDisplay.bookTitle.value,
-      UpdateDisplay.bookAuthor.value,
+      UpdateDisplay.bookAuthor.value
     );
     books.push(bookItem);
     localStorage.setItem('books', JSON.stringify(books));
@@ -57,11 +57,9 @@ class UpdateDisplay {
 
     const removeBtn = document.createElement('button');
     removeBtn.classList.add('remove-btn');
-    const underLine = document.createElement('hr');
 
     bookBlock.innerHTML = `
-      <p class='book-Author'>${bookItem.author}</p>
-      <p class='book-title'>${bookItem.title}</p>`;
+      <p class='book-title'>'${bookItem.title}'  by  ${bookItem.author}</p>`;
 
     removeBtn.innerText = 'remove';
 
@@ -70,7 +68,6 @@ class UpdateDisplay {
     };
 
     bookBlock.appendChild(removeBtn);
-    bookBlock.appendChild(underLine);
     UpdateDisplay.listSection.appendChild(bookBlock);
   }
 }
