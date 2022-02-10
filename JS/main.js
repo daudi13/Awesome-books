@@ -1,4 +1,4 @@
-const books = [];
+let books = [];
 const listSection = document.querySelector('.list-section');
 const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
@@ -6,9 +6,17 @@ const theForm = document.querySelector('form');
 
 // adding items in the books array
 
-function addBookItem(bookItem) {
+function removeBook(bookitem, i) {
+  const bookBlock = document.getElementById(i);
+  books = books.filter((item) => item !== bookitem);
+  localStorage.setItem('collectedBooks', JSON.stringify(books));
+  listSection.removeChild(bookBlock);
+}
+
+function addBookItem(bookItem, i) {
   const bookBlock = document.createElement('div');
   bookBlock.classList.add('bookBlock');
+  bookBlock.id = i;
 
   const removeBtn = document.createElement('button');
   removeBtn.classList.add('remove-btn');
@@ -21,26 +29,37 @@ function addBookItem(bookItem) {
   bookBlock.appendChild(removeBtn);
   bookBlock.appendChild(underLine);
   listSection.appendChild(bookBlock);
-  const x = Array.from(document.querySelectorAll('.bookBlock'));
 
-  document.querySelectorAll('.remove-btn').forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-      x[i].remove();
-    });
-  });
+  removeBtn.onclick = () => {
+    removeBook(bookItem, i);
+  };
 }
 
 function addBooks(item) {
-  addBookItem(item);
   books.push({
     title: bookTitle.value,
     author: bookAuthor.value,
   });
 
-  localStorage.setItem('CollectedBooks', JSON.stringify(books));
+  localStorage.setItem('collectedBooks', JSON.stringify(books));
   bookTitle.value = '';
   bookAuthor.value = '';
+  addBookItem(item, (books.length - 1));
 }
+
+function updateUi() {
+  if (localStorage.getItem('collectedBooks')) {
+    books = JSON.parse(localStorage.getItem('collectedBooks'));
+    books.forEach((bookItem, i) => {
+      addBookItem(bookItem, i);
+    });
+  } else {
+    localStorage.setItem('collectedBooks', '');
+    books = [];
+  }
+}
+
+updateUi();
 
 theForm.addEventListener('submit', (e) => {
   e.preventDefault();

@@ -1,60 +1,55 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Awesome books
 
-> Description the project.
+![screenshot](./awesomebook.png)
 
+> This is a team project in the Microverse second Module. The project is a book application that enables a user to add and remove books to a list
 
-## Built With
+The endgoal of the project is to build the application using Vanilla JavaScript. The project was built through the following stage.  
+Click [here](https://daudi13.github.io/Awesome-books/) to get a live preview of the project
 
-- Major languages
-- Frameworks
-- Technologies used
+## stages
 
-## Live Demo (if available)
+- Project 1: Manage books collection (Plain JS with Objects)
+- Project 2: Manage books collection (Plain JS with classes) and basic CSS
+- Project 3: Create a complete website with navigation
+#### Cloning the project
+```
+git clone  https://github.com/daudi13/Awesome-books <Your-Build-Directory>
+```
 
-[Live Demo Link](https://livedemo.com)
+## Getting packages and debuging with Stylelint
+```
+npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
+```
+##### For validation detection using Stylelint Run
+```
+npx stylelint "**/*.{css,scss}"
+```
+##### from parent source directory
 
+## Getting packages and debuging with ESlint
+```
+npm install npm install --save-dev eslint@7.x eslint-config-airbnb-base@14.x eslint-plugin-import@2.x babel-eslint@10.x
+```
+##### For validation detection using Stylelint Run
+```
+npx eslint .
+```
+##### from parent source directory
 
-## Getting Started
+## Getting packages and debuging with Webhint
+```
+npm init -y
+npm install --save-dev hint@6.x
+```
+##### For validation detection using Webhint Run
+```
+npx hint .
+```
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
-
-## Authors
-
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
+ ## 🤝 Contributing
 
 Feel free to check the [issues page](../../issues/).
 
@@ -62,12 +57,10 @@ Feel free to check the [issues page](../../issues/).
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
+## Authors
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
+- David Ouma [github](https://github.com/daudi13)
+- Maxwell [github](https://github.com/i-max-xi)
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
