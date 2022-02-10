@@ -1,4 +1,3 @@
-David, [2/10/2022 3:11 PM]
 // Initialize the books
 let books;
 
