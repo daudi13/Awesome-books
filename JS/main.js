@@ -41,13 +41,14 @@ class updateDisplay {
 
 	const underLine = document.createElement('hr');
 
-	bookBlock.innerHTML = `<p class="book-title">${bookItem.title}</p>
-			<p class="book-Author">${bookItem.author}</p>`
+	bookBlock.innerHTML = `
+			<p class="book-Author">${bookItem.author}</p>
+			<p class="book-title">${bookItem.title}</p>`
 			bookBlock.appendChild(removeBtn);
 			bookBlock.appendChild(underLine);
 			updateDisplay.listSection.appendChild(bookBlock);
 
-		removeBtn.onClick = () => {
+		removeBtn.onclick = () => {
 			updateDisplay.delBook(bookItem, pos)
 		}
 }
