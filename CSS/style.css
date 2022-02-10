@@ -22,7 +22,7 @@ body {
   justify-content: space-between;
 }
 
-.bookBlock:nth-child(odd){
+.bookBlock:nth-child(odd) {
   background-color: rgb(209, 208, 208);
 }
 
@@ -48,5 +48,4 @@ button {
 .remove-btn {
   align-self: auto;
   height: 20px;
-  align-self: center;
 }
