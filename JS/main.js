@@ -39,7 +39,7 @@ class UpdateDisplay {
   static timeUpdate() {
     return UpdateDisplay.thedate.toLocaleDateString(
       'en-US',
-      UpdateDisplay.options
+      UpdateDisplay.options,
     );
   }
 
@@ -47,7 +47,7 @@ class UpdateDisplay {
   static addBooks() {
     const bookItem = new UpdateDisplay(
       UpdateDisplay.bookTitle.value,
-      UpdateDisplay.bookAuthor.value
+      UpdateDisplay.bookAuthor.value,
     );
     books.push(bookItem);
     localStorage.setItem('books', JSON.stringify(books));
@@ -112,7 +112,7 @@ UpdateDisplay.listBtn.forEach((btn, i) => {
 
 UpdateDisplay.date.innerText = UpdateDisplay.thedate.toLocaleDateString(
   'en-US',
-  UpdateDisplay.options
+  UpdateDisplay.options,
 );
 
 UpdateDisplay.updateUi();
