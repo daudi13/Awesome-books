@@ -10,6 +10,7 @@ body {
   align-items: center;
 }
 
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -37,13 +38,23 @@ section {
   text-align: center;
 }
 
-.active {
-  display: block;
+.welcome {
+	display: none;
 }
 
-.inactive {
-  display: none;
+.addNew {
+	display: none;
 }
+
+.contact {
+	display: none;
+}
+
+.active {
+  display: block !important;
+}
+
+
 
 .main {
   width: 100%;
@@ -86,6 +97,7 @@ form > * + * {
 input {
   border: 2px solid black;
   width: 100%;
+	padding: 6px 10px;
 }
 
 button {

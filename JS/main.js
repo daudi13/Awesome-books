@@ -15,8 +15,32 @@ class UpdateDisplay {
 
   static formBtn = document.querySelector('.btn-submit');
 
-  static bookAuthor = document.querySelector('#author');
+	static bookAuthor = document.querySelector('#author');
+	
+	static listBtn = document.querySelectorAll('.listBtn');
 
+	// static date = document.querySelector('')
+
+	static thedate = new Date();
+
+	static options = {
+		month: 'long',
+		day: 'numeric',
+		year: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
+		second: 'numeric'
+	}
+
+	static date = document.querySelector('.date');
+
+
+	static addActive = document.querySelectorAll('.sec');
+
+	static timeUpdate() {
+		return UpdateDisplay.thedate.toLocaleDateString('en-US', UpdateDisplay.options)
+	}
+	
   // create new book
   static addBooks() {
     const bookItem = new UpdateDisplay(
@@ -59,7 +83,7 @@ class UpdateDisplay {
     removeBtn.classList.add('remove-btn');
 
     bookBlock.innerHTML = `
-      <p class='book-title'>'${bookItem.title}'  by  ${bookItem.author}</p>`;
+      <p class='book-title'>'${bookItem.author}  by ${bookItem.title}</p>`;
 
     removeBtn.innerText = 'remove';
 
@@ -71,6 +95,20 @@ class UpdateDisplay {
     UpdateDisplay.listSection.appendChild(bookBlock);
   }
 }
+
+UpdateDisplay.listBtn.forEach((btn, i) => {
+	btn.onclick = () => {
+		UpdateDisplay.addActive.forEach((sec, index) => {
+			if (i === index) {
+				sec.classList.add('active')
+			} else {
+				sec.classList.remove('active')
+			}
+		})
+	}
+})
+
+UpdateDisplay.date.innerText = UpdateDisplay.thedate.toLocaleDateString('en-US', UpdateDisplay.options)
 
 UpdateDisplay.updateUi();
 
