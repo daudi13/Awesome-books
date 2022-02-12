@@ -100,6 +100,7 @@ function time() {
     hour: 'numeric',
     minute: 'numeric',
     second: 'numeric',
+    hour12: 'false',
   };
 
   timeBox.textContent = `${date.toLocaleTimeString(locale, options)}`;

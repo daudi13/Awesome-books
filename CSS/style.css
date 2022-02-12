@@ -22,6 +22,16 @@ nav {
   margin-top: 20px;
 }
 
+.nav .listBtn {
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.nav .listBtn:hover {
+	transform: scale(0.98);
+	color: aqua;
+}
+
 header ul {
   display: flex;
   list-style-type: none;
@@ -137,6 +147,7 @@ button {
   align-self: flex-end;
   box-shadow: 1px 2px 2px 1px black;
 	padding: 5px 10px;
+	border: 2px solid black;
 }
 
 /* .remove-btn {
