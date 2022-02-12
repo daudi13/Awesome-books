@@ -37,7 +37,8 @@ static date = document.querySelector('.date');
 static addActive = document.querySelectorAll('.sec');
 
 static timeUpdate() {
-return UpdateDisplay.thedate.toLocaleDateString('en-US', UpdateDisplay.options);
+
+UpdateDisplay.date.innerText = UpdateDisplay.thedate.toLocaleDateString('en-US', UpdateDisplay.options);
 }
 
 // create new book
@@ -74,7 +75,7 @@ const bookItem = new UpdateDisplay(
 	}
 
 	static addBookItem(bookItem, pos) {
-	  const bookBlock = document.createElement('div');
+	  const bookBlock = document.createElement('li');
 	  bookBlock.classList.add('bookBlock');
 	  bookBlock.id = pos;
 
@@ -107,8 +108,10 @@ UpdateDisplay.listBtn.forEach((btn, i) => {
   };
 });
 
-UpdateDisplay.date.innerText = UpdateDisplay.thedate.toLocaleDateString('en-US', UpdateDisplay.options);
 
 UpdateDisplay.updateUi();
+
+setInterval(() => {UpdateDisplay.timeUpdate()}, 1000)
+UpdateDisplay.timeUpdate();
 
 UpdateDisplay.formBtn.addEventListener('click', UpdateDisplay.addBooks);
